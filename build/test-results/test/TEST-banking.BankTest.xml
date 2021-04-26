@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="banking.BankTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-21T01:23:29" hostname="n3-78-115.dhcp.drexel.edu" time="0.005">
+<testsuite name="banking.BankTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2021-04-26T20:35:26" hostname="Faraaz-Khan-Mac.local" time="0.019">
   <properties/>
-  <testcase name="create_a_checking_account()" classname="banking.BankTest" time="0.002"/>
-  <testcase name="create_a_savings_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="open_a_cd_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="open_a_checking_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="transfer_from_checking_to_savings_account()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="multiple_transfers_between_checking_and_savings()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="open_multiple_bank_accounts()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="transfer_between_two_checking_accounts()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="withdraw_more_than_account_balance()" classname="banking.BankTest" time="0.001"/>
   <testcase name="bank_initially_has_no_accounts()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="open_a_savings_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="deposit_into_an_account_twice()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="withdraw_from_an_account()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="transfer_amount_greater_than_accounts_current_balance()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="withdraw_twice_from_an_account()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="transfer_between_two_savings_accounts()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="deposit_into_an_account()" classname="banking.BankTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
