@@ -8,4 +8,15 @@ public class Account {
         return balance;
     }
 
+    void deposit(double balance) {
+        this.balance += balance;
+    }
+
+    public void withdraw(double balance) {
+        this.balance -= balance;
+    }
+
+    public void setBalance(double i) {
+        this.balance = i;
+    }
 }

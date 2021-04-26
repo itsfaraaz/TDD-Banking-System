@@ -19,4 +19,7 @@ public class CDAccount extends Account {
         return apr;
     }
 
+    public Boolean canTransfer() {
+        return false;
+    }
 }
