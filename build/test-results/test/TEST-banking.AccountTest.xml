@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="banking.AccountTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-26T20:35:26" hostname="Faraaz-Khan-Mac.local" time="0.003">
+<testsuite name="banking.AccountTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-27T22:10:25" hostname="Faraaz-Khan-Mac.local" time="0.001">
   <properties/>
   <testcase name="open_checking_account()" classname="banking.AccountTest" time="0.0"/>
-  <testcase name="create_cd_account()" classname="banking.AccountTest" time="0.002"/>
-  <testcase name="create_savings_account()" classname="banking.AccountTest" time="0.001"/>
+  <testcase name="create_cd_account()" classname="banking.AccountTest" time="0.001"/>
+  <testcase name="create_savings_account()" classname="banking.AccountTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
