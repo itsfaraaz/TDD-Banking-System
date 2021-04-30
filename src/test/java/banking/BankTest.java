@@ -4,14 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static banking.AccountTest.BALANCE;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BankTest {
 
     static String ID = "12345678";
     static String ID_DIFFERENT = "12345677";
     static double APR = 0.01;
+    private static double APR_TWO = 0.60;
     static double AMOUNT = 1000;
     private Bank bank;
 
@@ -42,8 +42,6 @@ class BankTest {
         bank.openCDAccount(ID, APR, BALANCE);
         assertEquals(1000, bank.getAccounts().get(ID).getBalance());
     }
-
-    // EDIT AFTER
 
     @Test
     void open_multiple_bank_accounts() {
@@ -160,7 +158,58 @@ class BankTest {
         assertEquals(500, secondAccount.getBalance());
     }
 
-    // WRITE PASS TIME TESTS
+    @Test
+    void pass_time_one_month_adds_one_month_to_current_month() {
+        bank.openCheckingAccount(ID, APR);
+        bank.depositInto(ID, 1000);
+        bank.passTime(1);
+        assertEquals(1, bank.getAccounts().get(ID).getMonths());
+    }
+
+    @Test
+    void pass_time_by_12_months() {
+        bank.openCheckingAccount(ID, APR);
+        bank.depositInto(ID, 1000);
+        bank.passTime(12);
+        assertEquals(12, bank.getAccounts().get(ID).getMonths());
+    }
+
+    @Test
+    void ensure_apr_is_being_calculated_and_added_to_balances_correctly_after_passing_time_by_a_month() {
+        bank.openCheckingAccount(ID, APR_TWO);
+        bank.depositInto(ID, 5000);
+        bank.openSavingsAccount(ID_DIFFERENT, APR_TWO);
+        bank.depositInto(ID_DIFFERENT, 80);
+        bank.openCDAccount(ID_DIFFERENT + "1", APR, 1000);
+        bank.withdrawFrom(ID_DIFFERENT + "1", 1000);
+        bank.passTime(1);
+        Account actualOne = bank.getAccounts().get(ID);
+        Account actualTwo = bank.getAccounts().get(ID_DIFFERENT);
+        Account actualThree = bank.getAccounts().get(ID_DIFFERENT + "1");
+        assertEquals(5002.50, Math.round(actualOne.getBalance() * 100.0) / 100.0);
+        assertEquals(80.04, Math.round(actualTwo.getBalance() * 100.0) / 100.0);
+        assertNull(actualThree);
+    }
+
+    @Test
+    void ensure_apr_is_being_calculated_and_added_to_balances_correctly_after_passing_time_by_two_months() {
+        bank.openCheckingAccount(ID, APR_TWO);
+        bank.depositInto(ID, 5000);
+        bank.openSavingsAccount(ID_DIFFERENT, APR_TWO);
+        bank.openCDAccount(ID_DIFFERENT + "1", APR_TWO + 1, 2000);
+        bank.passTime(2);
+        assertEquals(5005.00, Math.round(bank.getAccounts().get(ID).getBalance() * 100.0) / 100.0);
+        assertNull(bank.getAccounts().get(ID_DIFFERENT));
+        assertEquals(2021.43, Math.round(bank.getAccounts().get(ID_DIFFERENT + "1").getBalance() * 100.0) / 100.0);
+    }
+
+    @Test
+    void pass_time_by_two_months_with_hundred_dollar_balance() {
+        bank.openSavingsAccount(ID, APR_TWO);
+        bank.depositInto(ID, 100);
+        bank.passTime(1);
+        assertEquals(100.05, Math.round(bank.getAccounts().get(ID).getBalance() * 100.0) / 100.0);
+    }
 
 
 }
