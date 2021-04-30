@@ -7,47 +7,47 @@ class DepositCommandValidator {
     }
 
     boolean validate(String[] commandArguments) {
-        if (validateThatAccountExistsInBank(commandArguments)) {
-            if (isDepositingIntoCheckingAccount(commandArguments)) {
+        if (validateThatAccountExistsInBank(commandArguments, bank, 1)) {
+            if (isReferencingCheckingAccount(commandArguments, bank, 1)) {
                 return depositAmountIntoCheckingAccountIsValid(commandArguments);
-            } else if (isDepositingIntoSavingsAccount(commandArguments)) {
+            } else if (isReferencingSavingsAccount(commandArguments, bank, 1)) {
                 return depositAmountIntoSavingsAccountIsValid(commandArguments);
-            } else if (isDepositingIntoCDAccount(commandArguments)) {
+            } else if (isReferencingCDAccount(commandArguments, bank, 1)) {
                 return false;
             }
         }
         return false;
     }
 
-    private boolean validateThatAccountExistsInBank(String[] commandArguments) {
+    static boolean validateThatAccountExistsInBank(String[] commandArguments, Bank bank, int accountIDIndex) {
         try {
-            return bank.getAccounts().containsKey(commandArguments[1]);
+            return bank.getAccounts().containsKey(commandArguments[accountIDIndex]);
         } catch (ArrayIndexOutOfBoundsException e) {
             return false;
         }
     }
 
-    private boolean isDepositingIntoCheckingAccount(String[] commandArguments) {
+    static boolean isReferencingCheckingAccount(String[] commandArguments, Bank bank, int accountIDIndex) {
         try {
-            Account account  = bank.getAccounts().get(commandArguments[1]);
+            Account account  = bank.getAccounts().get(commandArguments[accountIDIndex]);
             return account instanceof CheckingAccount;
         } catch (ArrayIndexOutOfBoundsException e) {
             return false;
         }
     }
 
-    private boolean isDepositingIntoSavingsAccount(String[] commandArguments) {
+    static boolean isReferencingSavingsAccount(String[] commandArguments, Bank bank, int accountIDIndex) {
         try {
-            Account account  = bank.getAccounts().get(commandArguments[1]);
+            Account account  = bank.getAccounts().get(commandArguments[accountIDIndex]);
             return account instanceof SavingsAccount;
         } catch (ArrayIndexOutOfBoundsException e) {
             return false;
         }
     }
 
-    private boolean isDepositingIntoCDAccount(String[] commandArguments) {
+    static boolean isReferencingCDAccount(String[] commandArguments, Bank bank, int accountIDIndex) {
         try {
-            Account account  = bank.getAccounts().get(commandArguments[1]);
+            Account account  = bank.getAccounts().get(commandArguments[accountIDIndex]);
             return account instanceof CDAccount;
         } catch (ArrayIndexOutOfBoundsException e) {
             return false;
@@ -64,7 +64,7 @@ class DepositCommandValidator {
         return (depositAmount != -1 && depositAmount >= 0 && depositAmount <= 2500);
     }
 
-    private double isDouble(String str) {
+    static double isDouble(String str) {
         try {
             return Double.parseDouble(str);
         } catch (NumberFormatException e) {
