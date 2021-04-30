@@ -1,7 +1,7 @@
 package banking;
 
 class CreateCommandValidator {
-    private Bank bank;
+    private final Bank bank;
     CreateCommandValidator(Bank bank) {
         this.bank = bank;
     }
@@ -28,7 +28,7 @@ class CreateCommandValidator {
     }
 
     private boolean validateThatAccountIDDoesNotExist(String accountID) {
-        return !bank.getAccounts().keySet().contains(accountID);
+        return !bank.getAccounts().containsKey(accountID);
     }
 
     private boolean validateCheckingOrSavingsAccountArguments(String[] commandArguments) {

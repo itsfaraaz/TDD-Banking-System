@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Bank {
+class Bank {
 
-    HashMap<String, Account> accounts = new HashMap<>();
-    ArrayList<String> accountOrder = new ArrayList<>();
+    private final HashMap<String, Account> accounts = new HashMap<>();
+    private final ArrayList<String> accountOrder = new ArrayList<>();
 
     HashMap<String, Account> getAccounts() {
         return accounts;

@@ -1,8 +1,8 @@
 package banking;
 
-public class CreateCommandProcessor {
+class CreateCommandProcessor {
 
-    private Bank bank;
+    private final Bank bank;
 
     CreateCommandProcessor(Bank bank) {
         this.bank = bank;

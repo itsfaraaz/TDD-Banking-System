@@ -117,7 +117,7 @@ class CommandProcessorTest {
     }
 
     @Test
-    public void transfer_between_two_checking_accounts() {
+    void transfer_between_two_checking_accounts() {
         bank.openCheckingAccount(ID, APR);
         bank.depositInto(ID, 1000);
         bank.openCheckingAccount(ID_DIFFERENT, APR);
@@ -128,7 +128,7 @@ class CommandProcessorTest {
     }
 
     @Test
-    public void transfer_between_two_savings_accounts() {
+    void transfer_between_two_savings_accounts() {
         bank.openSavingsAccount(ID, APR);
         bank.depositInto(ID, 2500);
         bank.openSavingsAccount(ID_DIFFERENT, APR);
@@ -139,7 +139,7 @@ class CommandProcessorTest {
     }
 
     @Test
-    public void transfer_from_checking_to_savings() {
+    void transfer_from_checking_to_savings() {
         bank.openCheckingAccount(ID, APR);
         bank.depositInto(ID, 1000);
         bank.openSavingsAccount(ID_DIFFERENT, APR);
@@ -150,7 +150,7 @@ class CommandProcessorTest {
     }
 
     @Test
-    public void transfer_from_savings_to_checking() {
+    void transfer_from_savings_to_checking() {
         bank.openSavingsAccount(ID, APR);
         bank.depositInto(ID, 2500);
         bank.openCheckingAccount(ID_DIFFERENT, APR);
@@ -161,7 +161,7 @@ class CommandProcessorTest {
     }
 
     @Test
-    public void transfer_twice_between_accounts() {
+    void transfer_twice_between_accounts() {
         bank.openCheckingAccount(ID, APR);
         bank.depositInto(ID, 1000);
         bank.openSavingsAccount(ID_DIFFERENT, APR);
@@ -174,7 +174,7 @@ class CommandProcessorTest {
     }
 
     @Test
-    public void pass_time_one_month_when_balance_is_zero() {
+    void pass_time_one_month_when_balance_is_zero() {
         bank.openCheckingAccount(ID, 1.0);
         String[] commandArgs = commandInput.commandToArray("pass 1");
         processor.execute(commandArgs);
@@ -182,7 +182,7 @@ class CommandProcessorTest {
     }
 
     @Test
-    public void pass_time_one_month_when_balance_is_greater_than_zero_and_less_then_100() {
+    void pass_time_one_month_when_balance_is_greater_than_zero_and_less_then_100() {
         bank.openCheckingAccount(ID, 1.0);
         bank.depositInto(ID, 55);
         String[] commandArgs = commandInput.commandToArray("pass 1");
@@ -191,7 +191,7 @@ class CommandProcessorTest {
     }
 
     @Test
-    public void pass_time_one_month_when_balance_is_greater_than_100() {
+    void pass_time_one_month_when_balance_is_greater_than_100() {
         bank.openCheckingAccount(ID, 1.0);
         bank.depositInto(ID, 5000);
         String[] commandArgs = commandInput.commandToArray("pass 1");

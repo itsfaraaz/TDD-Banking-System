@@ -1,7 +1,7 @@
 package banking;
 
 class PassTimeCommandValidator {
-    private Bank bank;
+    private final Bank bank;
     PassTimeCommandValidator(Bank bank) {
         this.bank = bank;
     }

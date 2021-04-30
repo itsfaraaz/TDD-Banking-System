@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BankTest {
 
-    static String ID = "12345678";
-    static String ID_DIFFERENT = "12345677";
-    static double APR = 0.01;
-    private static double APR_TWO = 0.60;
-    static double AMOUNT = 1000;
+    static final String ID = "12345678";
+    static final String ID_DIFFERENT = "12345677";
+    static final double APR = 0.01;
+    private static final double APR_TWO = 0.60;
+    static final double AMOUNT = 1000;
     private Bank bank;
 
     @BeforeEach

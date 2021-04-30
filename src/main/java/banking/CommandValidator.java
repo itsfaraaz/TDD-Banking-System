@@ -1,8 +1,8 @@
 package banking;
 
-public class CommandValidator {
+class CommandValidator {
 
-    private Bank bank;
+    private final Bank bank;
 
     CommandValidator(Bank bank) {
         this.bank = bank;

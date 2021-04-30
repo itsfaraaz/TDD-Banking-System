@@ -4,11 +4,11 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class CommandStorage {
+class CommandStorage {
 
-    private Bank bank;
-    private List<String> invalidCommands = new ArrayList<>();
-    private Map<String, List<String>> validCommands = new HashMap<>();
+    private final Bank bank;
+    private final List<String> invalidCommands = new ArrayList<>();
+    private final Map<String, List<String>> validCommands = new HashMap<>();
 
     public CommandStorage(Bank bank) {
         this.bank = bank;

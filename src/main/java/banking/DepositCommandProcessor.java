@@ -2,7 +2,7 @@ package banking;
 
 class DepositCommandProcessor {
 
-    private Bank bank;
+    private final Bank bank;
 
     DepositCommandProcessor(Bank bank) {
         this.bank = bank;

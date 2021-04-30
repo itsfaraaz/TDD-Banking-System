@@ -10,11 +10,10 @@ class PassCommandValidationTest {
 
     private CommandValidator commandValidator;
     private CommandInput commandInput;
-    private Bank bank;
 
     @BeforeEach
     void setup() {
-        bank = new Bank();
+        Bank bank = new Bank();
         commandValidator = new CommandValidator(bank);
         commandInput = new CommandInput();
     }

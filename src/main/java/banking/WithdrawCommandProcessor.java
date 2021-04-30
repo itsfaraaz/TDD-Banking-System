@@ -1,7 +1,7 @@
 package banking;
 
 class WithdrawCommandProcessor {
-    private Bank bank;
+    private final Bank bank;
 
     WithdrawCommandProcessor(Bank bank) {
         this.bank = bank;

@@ -3,7 +3,7 @@ package banking;
 import static banking.DepositCommandValidator.*;
 
 class WithdrawCommandValidator {
-    private Bank bank;
+    private final Bank bank;
     WithdrawCommandValidator(Bank bank) {
         this.bank = bank;
     }

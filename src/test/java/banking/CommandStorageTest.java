@@ -3,13 +3,11 @@ package banking;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CommandStorageTest {
-    CommandStorage commandStorage;
-    Bank bank;
+    private CommandStorage commandStorage;
+    private Bank bank;
 
     private final String INVALID_CREATE_COMMAND = "creat savings 12345678 0.01";
     private final String INVALID_DEPOSIT_COMMAND = "deposit savings 124345678 0.01";
@@ -117,7 +115,7 @@ class CommandStorageTest {
     }
 
     @Test
-    public void output_account_state_with_two_transaction_history() {
+    void output_account_state_with_two_transaction_history() {
         bank.openSavingsAccount("12345678", 0.6);
         bank.depositInto("12345678", 1000.059);
         bank.openCheckingAccount("87654321", 0.60);
@@ -131,7 +129,7 @@ class CommandStorageTest {
     }
 
     @Test
-    public void output_two_account_states_and_their_transaction_history() {
+    void output_two_account_states_and_their_transaction_history() {
         bank.openSavingsAccount("12345678", 0.6);
         bank.depositInto("12345678", 1000.059);
         commandStorage.storeValidCommand("Deposit 12345678 700");
@@ -145,7 +143,7 @@ class CommandStorageTest {
     }
 
     @Test
-    public void output_account_state_transaction_history_and_invalid_commands() {
+    void output_account_state_transaction_history_and_invalid_commands() {
         bank.openSavingsAccount("12345678", 0.6);
         bank.depositInto("12345678", 1000.059);
         commandStorage.storeInvalidCommand("depop 12345678 0");

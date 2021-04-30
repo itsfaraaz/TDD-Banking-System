@@ -4,8 +4,8 @@ import static banking.DepositCommandValidator.*;
 
 class TransferCommandValidator {
 
-    private Bank bank;
-    private CommandValidator validator;
+    private final Bank bank;
+    private final CommandValidator validator;
 
     TransferCommandValidator(Bank bank) {
         this.bank = bank;

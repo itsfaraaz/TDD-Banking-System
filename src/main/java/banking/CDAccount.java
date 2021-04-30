@@ -1,6 +1,6 @@
 package banking;
 
-public class CDAccount extends Account {
+class CDAccount extends Account {
 
     CDAccount(String id, double apr, double balance) {
         super.id = id;

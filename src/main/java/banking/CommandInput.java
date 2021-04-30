@@ -1,8 +1,7 @@
 package banking;
 
-public class CommandInput {
+class CommandInput {
     public String[] commandToArray(String commandAsString) {
-        String[] commandAsArray = commandAsString.stripTrailing().split(" ");
-        return commandAsArray;
+        return commandAsString.stripTrailing().split(" ");
     }
 }

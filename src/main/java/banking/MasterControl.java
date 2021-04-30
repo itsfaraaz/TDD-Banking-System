@@ -2,7 +2,7 @@ package banking;
 
 import java.util.List;
 
-public class MasterControl {
+class MasterControl {
 
     private final CommandValidator commandValidator;
     private final CommandProcessor commandProcessor;

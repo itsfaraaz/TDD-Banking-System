@@ -7,7 +7,7 @@ import static banking.BankTest.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class CDAccountTest {
+class CDAccountTest {
 
     private CDAccount account;
 

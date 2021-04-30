@@ -2,8 +2,6 @@ package banking;
 
 class SavingsAccount extends Account {
 
-    private String id;
-    private double apr;
     private boolean alreadyMadeWithdrawalThisMonth = false;
 
     SavingsAccount(String id, double apr) {

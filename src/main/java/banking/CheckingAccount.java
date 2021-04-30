@@ -1,6 +1,6 @@
 package banking;
 
-public class CheckingAccount extends Account {
+class CheckingAccount extends Account {
 
     CheckingAccount(String id, double apr) {
         super.id = id;

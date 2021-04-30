@@ -1,8 +1,8 @@
 package banking;
 
-public class PassTimeCommandProcessor {
+class PassTimeCommandProcessor {
 
-    private Bank bank;
+    private final Bank bank;
 
     PassTimeCommandProcessor(Bank bank) {
         this.bank = bank;

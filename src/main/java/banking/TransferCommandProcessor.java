@@ -1,7 +1,7 @@
 package banking;
 
 class TransferCommandProcessor {
-    private Bank bank;
+    private final Bank bank;
 
     TransferCommandProcessor(Bank bank) {
         this.bank = bank;

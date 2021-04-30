@@ -1,6 +1,6 @@
 package banking;
 
-public class Account {
+class Account {
 
     double balance;
     int age = 0;
