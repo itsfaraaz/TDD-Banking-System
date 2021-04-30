@@ -3,7 +3,6 @@ package banking;
 class CommandProcessor {
 
     private final Bank bank;
-
     CommandProcessor(Bank bank) {
         this.bank = bank;
     }
