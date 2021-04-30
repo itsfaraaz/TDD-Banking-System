@@ -4,19 +4,28 @@ class SavingsAccount extends Account {
 
     private String id;
     private double apr;
+    private boolean alreadyMadeWithdrawalThisMonth = false;
 
     SavingsAccount(String id, double apr) {
-        this.id = id;
-        this.apr = apr;
+        super.id = id;
+        super.apr = apr;
         super.balance = 0;
+        super.accountType = "Savings";
     }
 
-    String getID() {
-        return id;
+    void setMonths(int months) {
+        if (months > super.age) {
+            alreadyMadeWithdrawalThisMonth = false;
+        }
+        super.age = months;
     }
 
-    double getAPR() {
-        return apr;
+    void changeWithdrawalStatus() {
+        alreadyMadeWithdrawalThisMonth = !alreadyMadeWithdrawalThisMonth;
+    }
+
+    boolean getAlreadyMadeWithdrawalThisMonth() {
+        return alreadyMadeWithdrawalThisMonth;
     }
 
 }
