@@ -164,7 +164,6 @@ class TransferCommandValidatorTest {
         bank.openCheckingAccount(ID, APR);
         bank.openSavingsAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 1");
-
         assertTrue(commandValidator.validate(commandArgs));
     }
 
@@ -173,7 +172,6 @@ class TransferCommandValidatorTest {
         bank.openCheckingAccount(ID, APR);
         bank.openSavingsAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 -1");
-
         assertFalse(commandValidator.validate(commandArgs));
     }
 
@@ -182,7 +180,6 @@ class TransferCommandValidatorTest {
         bank.openCheckingAccount(ID, APR);
         bank.openSavingsAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 400");
-
         assertTrue(commandValidator.validate(commandArgs));
     }
 
@@ -191,7 +188,6 @@ class TransferCommandValidatorTest {
         bank.openCheckingAccount(ID, APR);
         bank.openSavingsAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 401");
-
         assertFalse(commandValidator.validate(commandArgs));
     }
 
@@ -200,7 +196,6 @@ class TransferCommandValidatorTest {
         bank.openSavingsAccount(ID, APR);
         bank.openSavingsAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 400");
-
         assertTrue(commandValidator.validate(commandArgs));
         commandArgs = commandInput.commandToArray("transfer 12345678 87654321");
         assertFalse(commandValidator.validate(commandArgs));
@@ -211,7 +206,6 @@ class TransferCommandValidatorTest {
         bank.openSavingsAccount(ID, APR);
         bank.openCheckingAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 0");
-
         assertTrue(commandValidator.validate(commandArgs));
     }
 
@@ -220,7 +214,6 @@ class TransferCommandValidatorTest {
         bank.openSavingsAccount(ID, APR);
         bank.openCheckingAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 1");
-
         assertTrue(commandValidator.validate(commandArgs));
     }
 
@@ -229,7 +222,6 @@ class TransferCommandValidatorTest {
         bank.openSavingsAccount(ID, APR);
         bank.openCheckingAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 -1");
-
         assertFalse(commandValidator.validate(commandArgs));
     }
 
@@ -238,7 +230,6 @@ class TransferCommandValidatorTest {
         bank.openSavingsAccount(ID, APR);
         bank.openCheckingAccount(ID_DIFFERENT, APR);
         String[] commandArgs = commandInput.commandToArray("transfer 12345678 12345677 1000");
-
         assertTrue(commandValidator.validate(commandArgs));
     }
 
@@ -247,7 +238,6 @@ class TransferCommandValidatorTest {
         bank.openCheckingAccount(ID, APR);
         bank.openCDAccount(ID_DIFFERENT, APR, 5000);
         String[] commandArgs = commandInput.commandToArray("transfer 87654321 12345677 3000");
-
         assertFalse(commandValidator.validate(commandArgs));
     }
 
