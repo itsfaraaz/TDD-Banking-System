@@ -19,240 +19,182 @@ class CreateCommandValidatorTest {
     }
 
     @Test
-    void invalid_empty_command() {
+    void empty_command_is_invalid() {
         String[] commandArgs = commandInput.commandToArray("");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void invalid_command_missing_account_type_id_and_apr() {
+    void cannot_create_an_account_without_the_account_type_accountID_and_apr() {
         String[] commandArgs = commandInput.commandToArray("create");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void invalid_command_missing_id_and_apr() {
+    void cannot_create_an_account_without_an_accountID_and_apr() {
         String[] commandArgs = commandInput.commandToArray("create checking");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void invalid_command_missing_apr() {
+    void cannot_create_an_account_without_an_apr() {
         String[] commandArgs = commandInput.commandToArray("create checking 12345678");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void invalid_command_missing_starting_balance_for_cd_account() {
+    void cannot_create_cd_account_without_a_starting_balance() {
         String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void account_type_is_all_caps_is_valid() {
+    void can_create_account_with_checking_in_all_caps() {
         String[] commandArgs = commandInput.commandToArray("create CHECKING 12345678 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void id_is_less_than_eight_digits_is_invalid() {
+    void cannot_create_account_with_less_than_eight_numbers() {
         String[] commandArgs = commandInput.commandToArray("create checking 1234567 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void id_is_greater_than_eight_digits_is_invalid() {
+    void cannot_create_account_with_more_than_eight_numbers() {
         String[] commandArgs = commandInput.commandToArray("create checking 123456789 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void id_is_not_an_eight_digit_number_is_invalid() {
+    void cannot_create_an_account_with_letters_in_ID() {
         String[] commandArgs = commandInput.commandToArray("create checking 123abc789 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void duplicate_checking_id_is_invalid() {
+    void cannot_create_a_checking_account_with_existing_account_ID() {
         bank.openCheckingAccount("12345678", 0.1);
         String[] commandArgs = commandInput.commandToArray("create checking 12345678 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void new_checking_id_is_valid() {
+    void can_create_a_checking_account_with_any_combination_of_numbers() {
         bank.openCheckingAccount("12345678", 0.1);
         String[] commandArgs = commandInput.commandToArray("create checking 13345678 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void duplicate_savings_id_is_invalid() {
+    void cannot_create_a_savings_account_with_existing_account_ID() {
         bank.openSavingsAccount("12345678", 0.1);
         String[] commandArgs = commandInput.commandToArray("create savings 12345678 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void new_savings_id_is_valid() {
+    void can_create_a_savings_account_with_any_combination_of_numbers() {
         bank.openSavingsAccount("12345678", 0.1);
         String[] commandArgs = commandInput.commandToArray("create savings 12345638 0.1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void duplicate_cd_id_is_invalid() {
+    void cannot_create_a_cd_account_with_existing_account_ID() {
         bank.openCDAccount("12345678", 0.01, 1000);
         String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.1 1000");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void new_cd_id_is_valid() {
+    void can_create_a_cd_account_with_any_combination_of_numbers() {
         bank.openCDAccount("12345678", 0.01, 1000);
-        String[] commandArgs = commandInput.commandToArray("create cd 12345378 0.1 1000");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+        String[] commandArgs = commandInput.commandToArray("create cd 12345677 0.1 1000");
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void apr_is_zero_is_valid() {
+    void can_create_an_account_with_zero_apr() {
         String[] commandArgs = commandInput.commandToArray("create checking 12345678 0");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void apr_is_one_is_valid() {
+    void can_create_an_account_with_a_whole_number_instead_of_decimal() {
         String[] commandArgs = commandInput.commandToArray("create checking 12345678 1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void apr_is_ten_is_valid() {
+    void can_create_an_account_with_max_ten_percent() {
         String[] commandArgs = commandInput.commandToArray("create checking 12345678 10");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void apr_is_eleven_is_invalid() {
-        String[] commandArgs = commandInput.commandToArray("create checking 12345678 11");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
-    }
-
-    @Test
-    void apr_is_negative_value_is_invalid() {
+    void cannot_create_account_with_a_negative_apr() {
         String[] commandArgs = commandInput.commandToArray("create checking 12345678 -1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void apr_is_one_thousand_is_invalid() {
-        String[] commandArgs = commandInput.commandToArray("create checking 12345678 1000");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+    void cannot_create_an_account_with_an_apr_over_ten_percent() {
+        String[] commandArgs = commandInput.commandToArray("create checking 12345678 11");
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void apr_is_not_a_double_is_invalid() {
+    void unexpected_character_in_apr_which_is_not_a_double_is_invalid() {
         String[] commandArgs = commandInput.commandToArray("create checking 12345678 0.a");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void amount_for_cd_is_zero_is_invalid() {
+    void cannot_create_cd_account_with_empty_starting_balance() {
         String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.99 0");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void amount_for_cd_is_one_is_invalid() {
-        String[] commandArgs = commandInput.commandToArray("create cd 12345678 1 1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
-    }
-
-    @Test
-    void amount_for_cd_is_999_is_invalid() {
+    void cannot_create_cd_account_with_less_than_one_thousand_starting_balance() {
         String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.39 999");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void amount_for_cd_is_one_thousand_is_valid() {
+    void can_create_cd_account_within_minimum_balance_of_one_thousand() {
         String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.23 1000");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void amount_for_cd_is_ten_thousand_is_valid() {
-        String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.99 10000");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertTrue(isCommandValid);
+    void can_create_cd_account_with_max_balance_of_ten_thousand() {
+        String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.93 10000");
+        assertTrue(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void amount_for_cd_is_10001_is_invalid() {
-        String[] commandArgs = commandInput.commandToArray("create cd 12345678 1.04 10001");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+    void cannot_create_cd_account_with_a_balance_over_ten_thousand() {
+        String[] commandArgs = commandInput.commandToArray("create cd 12345678 1.09 10001");
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void amount_for_cd_is_a_negative_value_is_invalid() {
-        String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.83 -1");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+    void cannot_create_cd_account_with_a_negative_start_balance() {
+        String[] commandArgs = commandInput.commandToArray("create cd 12345678 2.83 -1");
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void amount_for_cd_is_hundred_thousand_is_invalid() {
-        String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.87 100000");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+    void unexpected_letters_in_starting_balance_for_cd_account() {
+        String[] commandArgs = commandInput.commandToArray("create cd 12345678 1.21 6b");
+        assertFalse(commandValidator.validate(commandArgs));
     }
 
     @Test
-    void amount_for_cd_has_letters_is_invalid() {
-        String[] commandArgs = commandInput.commandToArray("create cd 12345678 0.21 6b");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
-    }
-
-    @Test
-    void account_type_is_misspelled_is_invalid() {
+    void typo_in_command_type_is_invalid() {
         String[] commandArgs = commandInput.commandToArray("create save 12345678 0.01");
-        boolean isCommandValid = commandValidator.validate(commandArgs);
-        assertFalse(isCommandValid);
+        assertFalse(commandValidator.validate(commandArgs));
     }
-
-//    @Test
-//    void command_is_trying_to_create_cd() {
-//        String[] commandArgs = commandInput.commandToArray("create cd 13579135 1.00 2000");
-//        CommandValidator validator = new CommandValidator(bank);
-//        boolean isCommandValid = validator.validationIfCd(commandArgs);
-//        assertTrue(isCommandValid);
-//    }
 }
