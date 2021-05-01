@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="banking.BankTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2021-05-01T00:50:04" hostname="Faraaz-Khan-Mac" time="0.01">
+<testsuite name="banking.BankTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2021-05-01T01:01:39" hostname="Faraaz-Khan-Mac" time="0.01">
   <properties/>
-  <testcase name="open_a_cd_account()" classname="banking.BankTest" time="0.001"/>
-  <testcase name="open_a_checking_account()" classname="banking.BankTest" time="0.001"/>
-  <testcase name="ensure_apr_is_being_calculated_and_added_to_balances_correctly_after_passing_time_by_two_months()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="open_a_cd_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="open_a_checking_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="ensure_apr_is_being_calculated_and_added_to_balances_correctly_after_passing_time_by_two_months()" classname="banking.BankTest" time="0.001"/>
   <testcase name="transfer_from_checking_to_savings_account()" classname="banking.BankTest" time="0.0"/>
-  <testcase name="multiple_transfers_between_checking_and_savings()" classname="banking.BankTest" time="0.0"/>
-  <testcase name="open_multiple_bank_accounts()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="multiple_transfers_between_checking_and_savings()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="open_multiple_bank_accounts()" classname="banking.BankTest" time="0.0"/>
   <testcase name="transfer_between_two_checking_accounts()" classname="banking.BankTest" time="0.0"/>
   <testcase name="withdraw_more_than_account_balance()" classname="banking.BankTest" time="0.0"/>
-  <testcase name="bank_initially_has_no_accounts()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="bank_initially_has_no_accounts()" classname="banking.BankTest" time="0.001"/>
   <testcase name="pass_time_by_12_months()" classname="banking.BankTest" time="0.0"/>
-  <testcase name="open_a_savings_account()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="open_a_savings_account()" classname="banking.BankTest" time="0.0"/>
   <testcase name="deposit_into_an_account_twice()" classname="banking.BankTest" time="0.0"/>
-  <testcase name="withdraw_from_an_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="withdraw_from_an_account()" classname="banking.BankTest" time="0.001"/>
   <testcase name="transfer_amount_greater_than_accounts_current_balance()" classname="banking.BankTest" time="0.0"/>
-  <testcase name="withdraw_twice_from_an_account()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="withdraw_twice_from_an_account()" classname="banking.BankTest" time="0.001"/>
   <testcase name="transfer_between_two_savings_accounts()" classname="banking.BankTest" time="0.0"/>
-  <testcase name="pass_time_by_two_months_with_hundred_dollar_balance()" classname="banking.BankTest" time="0.001"/>
+  <testcase name="pass_time_by_two_months_with_hundred_dollar_balance()" classname="banking.BankTest" time="0.0"/>
   <testcase name="deposit_into_an_account()" classname="banking.BankTest" time="0.0"/>
-  <testcase name="ensure_apr_is_being_calculated_and_added_to_balances_correctly_after_passing_time_by_a_month()" classname="banking.BankTest" time="0.0"/>
+  <testcase name="ensure_apr_is_being_calculated_and_added_to_balances_correctly_after_passing_time_by_a_month()" classname="banking.BankTest" time="0.001"/>
   <testcase name="pass_time_one_month_adds_one_month_to_current_month()" classname="banking.BankTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
